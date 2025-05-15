@@ -89,7 +89,7 @@ app.use(session({
 function requireLogin(req, res, next) {
   // Allow access to login, signup, createaccount, and static files
   const openPaths = [
-    '/', '/login', '/createaccount', '/logout', '/adminlogin', '/adminloginpost'
+    '/', '/login', '/createaccount', '/signup', '/logout', '/adminlogin', '/adminloginpost'
   ];
   // Allow static assets (css, js, images, etc.)
   if (
@@ -318,8 +318,8 @@ app.use('/checkout', checkoutRoutes);
 app.use('/', checkoutRouter);
 app.use('/admin', adminRouter);
 
-app.post('/signup', (req, res) => {
-  const sql = "INSERT INTO login (fname, lname, email, password, pwd) VALUES(?, ?, ?, ?, ?)";
+app.post('/signup', async (req, res) => {
+  const sql = "INSERT INTO login (fname, lname, email, password, pwd) VALUES (?, ?, ?, ?, ?)";
   const values = [
     req.body.fname,
     req.body.lname,
@@ -327,16 +327,13 @@ app.post('/signup', (req, res) => {
     req.body.password,
     req.body.pwd
   ];
-
-  pool.query(sql, values, (err, data) => {
-    if (err) {
-      console.error('Error inserting data into MySQL:', err);
-      res.status(500).send('Error inserting data into MySQL');
-      return;
-    }
-    
+  try {
+    const result = await pool.query(sql, values);
     res.redirect("/");
-  });
+  } catch (err) {
+    console.error('Error inserting data into MySQL:', err);
+    res.status(500).send('Error inserting data into MySQL');
+  }
 });
 
 app.post('/login', async (req, res) => {
