@@ -278,4 +278,16 @@ router.get('/invoices', async (req, res) => {
     }
 });
 
+// Mark as Delivered
+router.post('/orders/:id/delivered', async (req, res) => {
+  await pool.query('UPDATE orders SET status = "Delivered" WHERE id = ?', [req.params.id]);
+  res.redirect('/admin/invoices');
+});
+
+// Cancel
+router.post('/orders/:id/cancel', async (req, res) => {
+  await pool.query('UPDATE orders SET status = "Cancelled" WHERE id = ?', [req.params.id]);
+  res.redirect('/admin/invoices');
+});
+
 export default router;

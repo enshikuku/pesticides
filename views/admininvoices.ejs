@@ -34,6 +34,7 @@
               <th>Total</th>
               <th>Status</th>
               <th>Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,16 @@
                   <span class="status-badge status-<%= order.status %>"><%= order.status %></span>
                 </td>
                 <td><%= order.created_at.toLocaleString ? order.created_at.toLocaleString() : order.created_at %></td>
+                <td>
+                  <% if(order.status === 'Pending') { %>
+                    <form action="/admin/orders/<%= order.id %>/delivered" method="POST" style="display:inline;">
+                      <button type="submit" class="btn btn-update">Mark as Delivered</button>
+                    </form>
+                    <form action="/admin/orders/<%= order.id %>/cancel" method="POST" style="display:inline;">
+                      <button type="submit" class="btn btn-delete">Cancel</button>
+                    </form>
+                  <% } %>
+                </td>
               </tr>
             <% }) %>
           </tbody>

@@ -137,14 +137,14 @@ router.get('/invoices', async (req, res) => {
 // Mark order as received
 router.post('/orders/:orderId/received', async (req, res) => {
     const { orderId } = req.params;
-    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['received', orderId]);
+    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['Recieved', orderId]);
     res.redirect('/invoices');
 });
 
 // Cancel order
 router.post('/orders/:orderId/cancel', async (req, res) => {
     const { orderId } = req.params;
-    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['cancelled', orderId]);
+    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['Cancelled', orderId]);
     res.redirect('/invoices');
 });
 

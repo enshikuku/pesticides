@@ -1050,19 +1050,25 @@ button.no-print:hover {
   margin-right: 3px;
 }
 
-.status-pending {
+.status-Pending {
   background: #ffe066;
   color: #8d7300;
   border: 1px solid #ffe066;
 }
 
-.status-received {
+.status-Delivered {
+  background: #b3e0ff;
+  color: #004080;
+  border: 1px solid #4da6ff;
+}
+
+.status-Recieved {
   background: #c8f7c5;
   color: #205820;
   border: 1px solid #4caf50;
 }
 
-.status-cancelled {
+.status-Cancelled {
   background: #ffd6d6;
   color: #b71c1c;
   border: 1px solid #f44336;
