@@ -137,7 +137,7 @@ router.get('/invoices', async (req, res) => {
 // Mark order as received
 router.post('/orders/:orderId/received', async (req, res) => {
     const { orderId } = req.params;
-    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['Recieved', orderId]);
+    await pool.query('UPDATE orders SET status = ? WHERE id = ?', ['Received', orderId]);
     res.redirect('/invoices');
 });
 

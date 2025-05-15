@@ -48,7 +48,7 @@ CREATE TABLE orders (
     address TEXT,
     email VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('Pending', 'Delivered', 'Recieved', 'Cancelled') DEFAULT 'Pending',
+    status ENUM('Pending', 'Delivered', 'Received', 'Cancelled') DEFAULT 'Pending',
     FOREIGN KEY (user_id) REFERENCES login(id)
 );
 
