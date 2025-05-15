@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PESTICIDE SUPPLY SYSTEM</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="create-account-page">
+
+  <div class="main-bg">
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-inner header-inner-centered">
+        <h1 class="company-logo">
+          <a href="/home" class="company-logo-link">PESTICIDES SUPPLY SYSTEM</a>
+        </h1>
+        <nav class="main-navigation nav-centered">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/" class="nav-link">User Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="/adminlogin" class="nav-link">Admin Login</a>
+            </li>
+            <li class="nav-item active">
+              <a href="/createaccount" class="nav-link">Create Account</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="content-section">
+      <div class="content-wrapper">
+        <div class="form-container">
+          <article class="form-article">
+            <h2 class="form-heading">Create Account:</h2>
+            <div class="form-wrapper">
+              <form method="POST" action="/signup" class="signup-form">
+                <div class="form-group">
+                  <label for="fname" class="form-label">First Name:</label>
+                  <input type="text" id="fname" name="fname" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="lname" class="form-label">Last Name:</label>
+                  <input type="text" id="lname" name="lname" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email:</label>
+                  <input type="email" id="email" name="email" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="pwd" class="form-label">Password:</label>
+                  <input type="password" id="pwd" name="password" minlength="4" maxlength="10" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="confirmpwd" class="form-label">Confirm Password:</label>
+                  <input type="password" id="confirmpwd" name="pwd" minlength="4" maxlength="10" required class="form-input">
+                </div>
+
+                <button type="submit" class="form-button">CREATE ACCOUNT</button>
+              </form>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const form = document.querySelector('.signup-form');
+    const passwordInput = document.getElementById('pwd');
+    const confirmPasswordInput = document.getElementById('confirmpwd');
+
+    form.addEventListener('submit', function(event) {
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        event.preventDefault();
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Passwords do not match.';
+        errorMessage.className = 'error-message';
+        form.appendChild(errorMessage);
+      }
+    });
+  </script>
+</body>
+</html>

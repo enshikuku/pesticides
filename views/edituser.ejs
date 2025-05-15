@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit User | Admin</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="main-bg">
+    <header class="main-header">
+      <div class="header-inner header-inner-centered">
+        <h1 class="company-logo">PESTICIDES SUPPLY SYSTEM</h1>
+      </div>
+    </header>
+    <main class="products-section">
+      <h2 class="products-title">Edit User</h2>
+      <form action="/admin/user/edit/<%= user.id %>" method="POST" class="product-form">
+        <label>
+          First Name
+          <input type="text" name="fname" value="<%= user.fname %>" required>
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="lname" value="<%= user.lname %>" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" value="<%= user.email %>" required>
+        </label>
+        <button type="submit">Update User</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

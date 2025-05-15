@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Product</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="main-bg">
+    <header class="main-header">
+      <div class="header-inner header-inner-centered">
+        <h1 class="company-logo">
+          PESTICIDES SUPPLY SYSTEM
+        </h1>
+        <nav class="main-navigation nav-centered">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/adminview" class="nav-link">View Product</a></li>
+            <li class="nav-item active"><a href="/addproduct" class="nav-link">Add Product</a></li>
+            <li class="nav-item"><a href="/admin/viewuser" class="nav-link">User Management</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Log Out</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="products-section">
+        <h2 class="products-title">Add New Product</h2>
+        <form action="/admin/add" method="POST" class="product-form">
+          <label>Product Name: <input type="text" name="product" required></label>
+          <label>Price (KSh): <input type="number" name="price" step="0.01" required></label>
+          <label>Dosage: <input type="text" name="dosage" required></label>
+          <label>Description: <textarea name="description" required></textarea></label>
+          <label>Target: <input type="text" name="target" required></label>
+          <label>Quantity: <input type="number" name="quantity" required></label>
+          <button type="submit" class="form-button">Add Product</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

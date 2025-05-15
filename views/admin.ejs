@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PESTICIDES SUPPLY SYSTEM | Contacts</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body class="contacts-page">
+
+  <div class="main-bg">
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-inner header-inner-centered">
+        <h1 class="company-logo">
+          <a href="/home" class="company-logo-link">PESTICIDES SUPPLY SYSTEM</a>
+        </h1>
+        <nav class="main-navigation nav-centered">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/" class="nav-link">User Login</a>
+            </li>
+            <li class="nav-item active">
+              <a href="/adminlogin" class="nav-link">Admin Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="/createaccount" class="nav-link">Create Account</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-login-section">
+      <h2 class="admin-login-heading">Admin Login</h2>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div style="color:red;"><%= error %></div>
+      <% } %>
+
+      <form action="/adminloginpost" method="POST" class="admin-login-form">
+        
+        <div class="form-group form-group-name">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" id="name" name="name" class="form-input" required>
+        </div>
+
+        <div class="form-group form-group-password">
+          <label for="myInput" class="form-label">Password:</label>
+          <input type="password" id="myInput" name="password" class="form-input" required>
+          <div class="password-toggle-row">
+            <input type="checkbox" id="togglePassword" class="password-toggle-checkbox" onclick="togglePasswordVisibility()">
+            <label for="togglePassword" class="password-toggle-label">Show Password</label>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit-button">Login</button>
+      </form>
+    </main>
+
+  </div>
+
+  <!-- Script to toggle password visibility -->
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById("myInput");
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>

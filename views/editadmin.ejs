@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Admin | Admin</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="products-section">
+    <h2 class="products-title">Edit Admin</h2>
+    <form action="/admin/edit/<%= admin.id %>" method="POST" class="product-form">
+      <label>
+        Name
+        <input type="text" name="name" value="<%= admin.name %>" required>
+      </label>
+      <button type="submit">Update Admin</button>
+    </form>
+  </main>
+</body>
+</html>

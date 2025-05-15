@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>All Invoices | Admin</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="main-bg">
+    <header class="main-header">
+      <div class="header-inner header-inner-centered">
+        <h1 class="company-logo">PESTICIDES SUPPLY SYSTEM</h1>
+        <nav class="main-navigation nav-centered">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/adminview" class="nav-link">View Product</a></li>
+            <li class="nav-item"><a href="/addproduct" class="nav-link">Add Product</a></li>
+            <li class="nav-item"><a href="/admin/viewuser" class="nav-link">User Management</a></li>
+            <li class="nav-item active"><a href="/admin/invoices" class="nav-link">All Invoices</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Log Out</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="products-section">
+      <h2 class="products-title">All Invoices</h2>
+      <div class="table-responsive">
+        <table class="admin-products-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>User</th>
+              <th>User Email</th>
+              <th>Shipping Address</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% orders.forEach(order => { %>
+              <tr>
+                <td><%= order.id %></td>
+                <td><%= order.fname %> <%= order.lname %></td>
+                <td><%= order.user_email %></td>
+                <td><%= order.address %></td>
+                <td><%= order.total %></td>
+                <td>
+                  <span class="status-badge status-<%= order.status %>"><%= order.status %></span>
+                </td>
+                <td><%= order.created_at.toLocaleString ? order.created_at.toLocaleString() : order.created_at %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
