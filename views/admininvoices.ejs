@@ -23,8 +23,12 @@
     </header>
     <main class="products-section">
       <h2 class="products-title">All Invoices</h2>
+      <div class="search-box">
+        <input type="text" id="invoiceSearch" class="search-input" placeholder="Search for...">
+        <button type="button" id="searchbutton" class="search-button">Search</button>
+      </div>
       <div class="table-responsive">
-        <table class="admin-products-table">
+        <table class="admin-products-table" id="adminInvoicesTable">
           <thead>
             <tr>
               <th>Order ID</th>
@@ -66,5 +70,35 @@
       </div>
     </main>
   </div>
+  <script>
+    // Auto reload every 30 seconds
+    setTimeout(function() {
+      window.location.reload();
+    }, 30000);
+
+    // Search/filter functionality
+    document.getElementById('invoiceSearch').addEventListener('keyup', function() {
+      var filter = this.value.toLowerCase();
+      var rows = document.querySelectorAll('#adminInvoicesTable tbody tr');
+      rows.forEach(function(row) {
+        var orderId = row.cells[0].textContent.toLowerCase();
+        var user = row.cells[1].textContent.toLowerCase();
+        var email = row.cells[2].textContent.toLowerCase();
+        if (
+          orderId.includes(filter) ||
+          user.includes(filter) ||
+          email.includes(filter)
+        ) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    document.getElementById('searchbutton').addEventListener('click', function() {
+      document.getElementById('invoiceSearch').dispatchEvent(new Event('keyup'));
+    });
+  </script>
 </body>
 </html>

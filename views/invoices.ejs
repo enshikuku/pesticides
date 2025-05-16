@@ -29,8 +29,12 @@
 
     <section class="invoices-section">
       <h2>My Invoices</h2>
+      <div class="search-box">
+        <input type="text" id="invoiceSearch" class="search-input" placeholder="Search for...">
+        <button type="button" id="searchbutton" class="search-button">Search</button>
+      </div>
       <% if (orders && orders.length > 0) { %>
-        <table class="invoices-table">
+        <table class="invoices-table" id="userInvoicesTable">
           <thead>
             <tr>
               <th>Order ID</th>
@@ -69,5 +73,36 @@
       <% } %>
     </section>
   </div>
+  <script>
+    setTimeout(function() {
+      window.location.reload();
+    }, 30000);
+
+    // Search/filter functionality
+    document.getElementById('searchbutton').addEventListener('click', function() {
+      document.getElementById('invoiceSearch').dispatchEvent(new Event('keyup'));
+    });
+
+    document.getElementById('invoiceSearch').addEventListener('keyup', function() {
+      var filter = this.value.toLowerCase();
+      var rows = document.querySelectorAll('#userInvoicesTable tbody tr');
+      rows.forEach(function(row) {
+        var orderId = row.cells[0].textContent.toLowerCase();
+        var total = row.cells[1].textContent.toLowerCase();
+        var status = row.cells[2].textContent.toLowerCase();
+        var date = row.cells[3].textContent.toLowerCase();
+        if (
+          orderId.includes(filter) ||
+          total.includes(filter) ||
+          status.includes(filter) ||
+          date.includes(filter)
+        ) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
